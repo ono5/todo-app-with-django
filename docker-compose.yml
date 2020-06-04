@@ -58,6 +58,9 @@ services:
       - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
       - ./nginx/log:/var/log/nginx
     container_name: nginx
+    depends_on:
+      - app
+      - frontend
 
   redis:
     image: redis:3.0
