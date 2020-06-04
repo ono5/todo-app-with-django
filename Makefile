@@ -1,4 +1,4 @@
-.PHONY: release all_tests ut mk flash startapp superuser django react
+.PHONY: release all_tests ut mk flt ash startapp superuser django react
 
 release:
 	docker-compose up --abort-on-container-exit migrate
