@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     # 3rd-party
     'rest_framework',
+    'corsheaders',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +57,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Reactからの接続を許可する
+CORS_ORIGIN_WHITELST = [
+    'http://localhost:3000',
 ]
 
 ROOT_URLCONF = 'app.urls'
