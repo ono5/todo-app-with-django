@@ -1,0 +1,14 @@
+Django==3.0.7
+django-cors-headers==2.1.0
+djangorestframework==3.7.3
+django-rest-auth==0.9.3
+pytz==2020.1
+uwsgi==2.0.17
+psycopg2-binary==2.8.5
+django-redis==4.10.0
+
+colorama==0.3.9
+coverage==4.4.2
+pinocchio==0.4.2
+pytest-django==3.9.0
+pytest-flake8==1.0.6
