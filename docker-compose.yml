@@ -1,5 +1,9 @@
 version: '2.4'
 
+volumes:
+  public:
+    driver: local
+
 services:
   app:
    build:
@@ -7,6 +11,7 @@ services:
    ports:
      - "8001"
    volumes:
+     - public:/public
      - ./app:/app
    command: uwsgi --ini /app/app/django.ini
    environment:
@@ -56,6 +61,7 @@ services:
     ports:
       - "80:80"
     volumes:
+      - public:/public
       - ./nginx/conf:/etc/nginx/conf.d
       - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
       - ./nginx/log:/var/log/nginx

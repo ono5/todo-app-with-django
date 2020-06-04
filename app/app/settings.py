@@ -139,3 +139,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'account.User'
+
+STATIC_ROOT = os.environ.get('STATIC_ROOT', '/public/static')
