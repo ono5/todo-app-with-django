@@ -20,3 +20,17 @@ class ModelTests(TestCase):
         # Assert ---
         assert user.name == name
         assert user.check_password(password)
+
+    def test_create_new_superuser(self):
+        """管理ユーザー確認テスト
+        """
+        # Arrange ---
+
+        # Act ---
+        user = get_user_model().objects.create_superuser(
+            'superuser',
+            'superuser')
+
+        # Assert ---
+        assert user.is_superuser
+        assert user.is_staff
