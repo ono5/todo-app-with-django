@@ -1,0 +1,64 @@
+version: '2.4'
+
+services:
+  app:
+   build:
+     context: .
+   ports:
+     - "8001"
+   volumes:
+     - ./app:/app
+   command: uwsgi --ini /app/app/django.ini
+   environment:
+    - DB_HOST=db
+    - DB_NAME=app
+    - DB_USER=postgres
+    - DB_PASS=supersecretpassword
+   container_name: app
+
+  db:
+    image: postgres:10-alpine
+    environment:
+     - POSTGRES_DB=app
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=supersecretpassword
+    container_name: db
+
+  frontend:
+      build:
+        context: .
+        dockerfile: "./Dockerfile-nodejs"
+      volumes:
+        - ./frontend:/frontend
+      command: >
+        sh -c "cd frontend && yarn start"
+      ports:
+        - "3000:3000"
+      container_name: frontend
+      depends_on:
+        - app
+      stdin_open: true
+
+  migrate:
+    extends:
+      service: app
+    command:
+      - python3
+      - manage.py
+      - migrate
+      - --no-input
+    container_name: migrate
+
+  nginx:
+    image: nginx:1.15.9-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ./nginx/log:/var/log/nginx
+    container_name: nginx
+
+  redis:
+    image: redis:3.0
+    container_name: redis
