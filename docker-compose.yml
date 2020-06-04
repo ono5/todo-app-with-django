@@ -48,6 +48,8 @@ services:
       - migrate
       - --no-input
     container_name: migrate
+    depends_on:
+      - db
 
   nginx:
     image: nginx:1.15.9-alpine

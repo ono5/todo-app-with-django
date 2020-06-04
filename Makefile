@@ -1,6 +1,5 @@
 .PHONY: release all_tests ut mk flash startapp superuser django react
 
-
 release:
 	docker-compose up --abort-on-container-exit migrate
 	docker-compose run app python3 manage.py collectstatic --no-input
@@ -8,6 +7,9 @@ release:
 
 all_tests:
 	docker-compose run --rm app pytest
+
+test:
+	docker-compose run --rm app sh -c "pytest -l -v -s ${app} && flake8"
 
 ut:
 	docker-compose run --rm app pytest -v -s -l --tb=short ${dir}
