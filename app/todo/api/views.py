@@ -10,6 +10,6 @@ from todo.api.serializers import TodoSerializer
 @api_view(['GET'])
 def todo_list_view(request):
     """post_view"""
-    todos = Todo.objects.filter(author__id=request.id)
+    todos = Todo.objects.all()
     serializer = TodoSerializer(todos, many=True)
     return Response(serializer.data)
