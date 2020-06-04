@@ -18,13 +18,13 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, name, password):
         """管理ユーザー
         """
-        user = self.create_user( email, password )
+        user = self.create_user(name, password )
         user.is_staff = True
         user.is_superuser = True
-        user.save( using=self._db )
+        user.save(using=self._db)
 
         return user
 
