@@ -87,6 +87,9 @@ DATABASES = {
 }
 
 # バックエンドをredisに設定
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
