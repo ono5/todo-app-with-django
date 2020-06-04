@@ -8,17 +8,17 @@ class ModelTests(TestCase):
         """ユーザー作成の確認テスト
         """
         # Arrange ---
-        name = 'admin'
+        username = 'admin'
         password = 'admin_password'
 
         # Act ---
         user = get_user_model().objects.create_user(
-            name=name,
+            username=username,
             password=password,
         )
 
         # Assert ---
-        assert user.name == name
+        assert user.username == username
         assert user.check_password(password)
 
     def test_create_new_superuser(self):

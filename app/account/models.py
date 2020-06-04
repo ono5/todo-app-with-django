@@ -9,19 +9,19 @@ from django.contrib.auth.models import (
 class UserManager(BaseUserManager):
     """UserManager
     """
-    def create_user(self, name, password=None, **extra_fields):
+    def create_user(self, username, password=None, **extra_fields):
         """通常のユーザー
         """
-        user = self.model(name=name, **extra_fields)
+        user = self.model(username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
-    def create_superuser(self, name, password):
+    def create_superuser(self, username, password):
         """管理ユーザー
         """
-        user = self.create_user(name, password )
+        user = self.create_user(username, password)
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -32,10 +32,10 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """CustomUser
     """
-    name = models.CharField(max_length=255, unique=True)
+    username = models.CharField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'name'
+    USERNAME_FIELD = 'username'
