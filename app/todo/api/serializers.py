@@ -7,4 +7,4 @@ class TodoSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Todo
-        exclude = ("id",)
+        fields = ['id', 'title', 'content']
