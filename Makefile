@@ -1,7 +1,6 @@
 .PHONY: release all_tests ut mk flt ash startapp superuser django react
 
 release:
-	docker-compose up --abort-on-container-exit migrate
 	docker-compose run app python3 manage.py collectstatic --no-input
 	docker-compose up ${option}
 
