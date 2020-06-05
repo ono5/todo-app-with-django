@@ -17,3 +17,8 @@
 .App-row {
   width: 90%;
 }
+
+#Todo-area {
+  display: none;
+}
+

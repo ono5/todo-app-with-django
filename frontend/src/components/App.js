@@ -1,22 +1,33 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useContext } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import TodoContainer from './TodoContainer';
 import Login from './Login';
 import reducer from '../reducers/'
 import AppContext from '../contexts/AppContext'
+import display from '../utils.js/display';
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, [])
+  const initialState = {
+    todos: [],
+    user: {},
+  }
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    const username = sessionStorage.getItem('username')
+    const token = sessionStorage.getItem('token')
+    // セッションにユーザー情報が存在する場合は、ログイン済みとする
+    if (username && token) {
+       display()
+    }
+  })
 
   console.log({state})
   return (
     <AppContext.Provider value={{state, dispatch}}>
-      <Router>
-        <Route exact path="/" component={TodoContainer} />
-        <Route path="/login" component={Login} />
-      </Router>
+      <TodoContainer />
+      <Login />
     </AppContext.Provider>
   );
 }

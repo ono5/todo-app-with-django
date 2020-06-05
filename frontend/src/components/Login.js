@@ -1,14 +1,18 @@
-import React, {useState, useReducer} from 'react'
+import React, {
+    useState,
+    useContext,
+} from 'react'
 import axios from 'axios'
 import {
     Button,
     Row,
 } from 'react-bootstrap';
-import reducer from '../reducers'
 import { SET_USER } from '../actions';
+import AppContext from '../contexts/AppContext';
+import display from '../utils.js/display';
 
 const Login = () => {
-    const [state, dispatch] = useReducer(reducer, {})
+    const { state, dispatch } = useContext(AppContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -25,15 +29,16 @@ const Login = () => {
             }})
             .then(res => {
                 var token = 'Token ' + res.data.token
-                // Todo: ページ移動するとstateの中身が消えてしまうため、改善策を探す
-                // dispatch({
-                //     type: SET_USER,
-                //     username,
-                //     token
-                // })
+                dispatch({
+                    type: SET_USER,
+                    username,
+                    token
+                })
+                // 画面表示切り替え
+                display()
+                // user情報をセッションストレージに格納
                 sessionStorage.setItem('username', username)
                 sessionStorage.setItem('token', token)
-                window.location.href = '/'
             })
             .catch(err => {
                 console.log(err)
@@ -42,7 +47,7 @@ const Login = () => {
     }
 
     return (
-        <div className="App container-flud">
+        <div className="App container-flud" id="Login-area">
             <header className="App-header">
                 <Row className="login-row">
                     <form>
