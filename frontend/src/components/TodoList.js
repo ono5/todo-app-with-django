@@ -1,19 +1,23 @@
 import React, {
     useState,
     useEffect,
+    useReducer,
 } from 'react'
 import axios from 'axios'
 import {
     Col,
 } from 'react-bootstrap';
+import reducer from '../reducers'
 
 const TodoList = () => {
+    const [state, dispatch] = useReducer(reducer, {})
     const [todos, setTodos] = useState([])
+    console.log({state})
 
     useEffect(() => {
         axios.get('http://localhost/api/todos/', {
             headers: {
-                'Authorization': 'Token 221263af7466083e773347f9335c5c93e0dc31ff',
+                'Authorization': sessionStorage.getItem('token'),
             }
         })
         .then(res => {setTodos(res.data)})

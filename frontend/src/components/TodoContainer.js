@@ -13,15 +13,8 @@ const TodoContainer = () => {
         if (!sessionStorage.getItem('username')) {
             window.location.href = '/login'
         }
-
-        dispatch({
-            type: SET_USER,
-            username: sessionStorage.getItem('username'),
-            token: sessionStorage.getItem('token')
-        })
     }, [])
 
-    console.log({state})
     return (
 
         <div className="App container-flud">
