@@ -62,7 +62,7 @@ MIDDLEWARE = [
 
 # Reactからの接続を許可する
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000',
+    'frontend:3000',
 )
 
 ROOT_URLCONF = 'app.urls'
