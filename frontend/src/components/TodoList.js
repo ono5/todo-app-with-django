@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import {
+    Col,
+} from 'react-bootstrap';
 
 const TodoList = () => {
     const [todos, setTodos] = useState([])
@@ -14,13 +17,13 @@ const TodoList = () => {
     }, [])
 
     return (
-        <div>
+        <Col xl={9}>
             <ul>
                 {
                     todos.map(todo => <li key={todo.id}>{todo.title}</li>)
                 }
             </ul>
-        </div>
+        </Col>
     )
 }
 
