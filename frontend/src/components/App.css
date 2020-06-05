@@ -22,8 +22,8 @@
 }
 
 .Nav-area {
-  text-align: center;
   padding: 100px;
+  margin: 0 auto;
 }
 
 .Signout {
@@ -32,4 +32,8 @@
 
 .Login-header {
   justify-content: center;
+}
+
+.Todo-list th td {
+  color: white;
 }

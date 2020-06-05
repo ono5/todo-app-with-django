@@ -30,7 +30,7 @@ const TodoList = () => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>表題</th>
+                        <th>タイトル</th>
                         <th>内容</th>
                         <th></th>
                         <th></th>
