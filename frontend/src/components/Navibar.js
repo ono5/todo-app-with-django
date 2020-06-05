@@ -1,9 +1,8 @@
 import React, {
-    useState,
     useContext,
 } from 'react'
 import AppContext from '../contexts/AppContext';
-import { Nav, Button } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 
 const Navibar = () => {
     const { state, dispatch } = useContext(AppContext)
