@@ -9,6 +9,8 @@ import {
     Col,
 } from 'react-bootstrap';
 import AppContext from '../contexts/AppContext';
+import todos from '../reducers/todos';
+import { DELETE_ALL_TODOS } from '../actions';
 
 const TodoForm = () => {
     const { state, dispatch } = useContext(AppContext)
@@ -45,6 +47,21 @@ const TodoForm = () => {
             })
     }
 
+    const submitAllDelete = (e) => {
+        e.preventDefault()
+        const result = window.confirm('全ての予定を削除しますか？')
+        if (result) {
+            const todos = state.todos
+            todos.map(todo => {
+                axios.delete(`http://localhost/api/todos/${todo.id}/`, {
+                    headers: {
+                        'Authorization': state.user.token,
+                }})
+            })
+            dispatch({ type: DELETE_ALL_TODOS})
+        }
+    }
+
     // タイトルとコンテンツの入力チェック
     const unPost = title === '' || content === ''
 
@@ -72,7 +89,11 @@ const TodoForm = () => {
                   className="btn btn-primary"
                   onClick={submitPost}
                   disabled={unPost}>予定を追加する</Button>
-                <Button className="btn btn-danger m-4">全ての予定を削除する</Button>
+                <Button
+                  className="btn btn-danger m-4"
+                  onClick={submitAllDelete}
+                  disabled={state.todos.length === 0}
+                >全ての予定を削除する</Button>
             </form>
         </Col>
     )
