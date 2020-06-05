@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import TodoContainer from './TodoContainer';
 import Login from './Login';
+import reducer from '../reducers/'
+import AppContext from '../contexts/AppContext'
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, [])
   return (
-    <Router>
-      <Route exact path="/" component={TodoContainer} />
-      <Route path="/login" component={Login} />
-    </Router>
+    <AppContext.Provider value={{state, dispatch}}>
+      <Router>
+        <Route exact path="/" component={TodoContainer} />
+        <Route path="/login" component={Login} />
+      </Router>
+    </AppContext.Provider>
   );
 }
 
