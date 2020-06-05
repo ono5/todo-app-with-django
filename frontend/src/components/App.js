@@ -6,6 +6,7 @@ import Login from './Login';
 import reducer from '../reducers/'
 import AppContext from '../contexts/AppContext'
 import display from '../utils.js/display';
+import { SET_USER } from '../actions';
 
 function App() {
   const initialState = {
@@ -20,8 +21,14 @@ function App() {
     // セッションにユーザー情報が存在する場合は、ログイン済みとする
     if (username && token) {
        display()
+       dispatch({
+        type: SET_USER,
+        username,
+        token
+      })
     }
-  })
+
+  }, [])
 
   console.log({state})
   return (

@@ -48,7 +48,7 @@ const Login = () => {
 
     return (
         <div className="App container-flud" id="Login-area">
-            <header className="App-header">
+            <header className="App-header Login-header">
                 <Row className="login-row">
                     <form>
                         <div className="form-group">
