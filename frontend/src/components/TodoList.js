@@ -8,11 +8,11 @@ import {
     Col,
 } from 'react-bootstrap';
 import AppContext from '../contexts/AppContext';
-import reducer from '../reducers'
+import Todo from './Todo';
+import { ALL_TODO } from '../actions';
 
 const TodoList = () => {
     const { state, dispatch } = useContext(AppContext)
-    const [todos, setTodos] = useState([])
 
     useEffect(() => {
         axios.get('http://localhost/api/todos/', {
@@ -20,8 +20,15 @@ const TodoList = () => {
                 'Authorization': state.user.token,
             }
         })
-        .then(res => {setTodos(res.data)})
+        .then(res => {
+            const allTodo = res.data
+            dispatch({
+                type: ALL_TODO,
+                todos: allTodo
+            })
+        })
     }, [])
+    console.log({state})
 
     return (
         <Col xl={9}>
@@ -37,25 +44,7 @@ const TodoList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        todos.map(todo =>
-                            <tr>
-                                <td>{todo.id}</td>
-                                <td><input value={todo.title} /></td>
-                                <td><input value={todo.content}/></td>
-                                <td>
-                                    <a>
-                                      <i className="fas fa-pen-square fa-lg text-success"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a>
-                                      <i className="far fa-trash-alt fa-lg delete text-danger"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        )
-                    }
+                 {state.todos.map((todo, index) => (<Todo key={index} todo={todo} />))}
                 </tbody>
             </table>
         </Col>

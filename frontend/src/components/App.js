@@ -30,7 +30,6 @@ function App() {
 
   }, [])
 
-  console.log({state})
   return (
     <AppContext.Provider value={{state, dispatch}}>
       <TodoContainer />
