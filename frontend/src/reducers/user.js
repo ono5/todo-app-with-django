@@ -1,11 +1,11 @@
 import {
-    GET_USER,
+    SET_USER,
     DELETE_USER,
 } from '../actions/'
 
 const user = (state={}, action) =>{
     switch(action.type) {
-        case GET_USER:
+        case SET_USER:
             return state
         case DELETE_USER:
             // 後で実装

@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {useEffect, useReducer} from 'react'
 import {
     Row,
 } from 'react-bootstrap';
 import Todo from './Todo';
 import TodoList from './TodoList';
+import reducer from '../reducers'
 
 const TodoContainer = () => {
+    const [state, dispatch] = useReducer(reducer, {})
+    console.log({state})
     return (
 
         <div className="App container-flud">
