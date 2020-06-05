@@ -17,9 +17,10 @@
 |No.|メソッド|エンドポイント|用途|
 |:----|:----|:----|:----|
 |1|POST|/api/users/|ユーザーの新規作成|
-|2|GET|/api/account/|ユーザー情報書き換え(要ログイン)|
-|3|POST|/api/auth/|アクセストークンを取得する|
-|4|GET|/api/todos/|Todo一覧を表示(要アクセストークン)|
+|2|GET|/api/users/<user_id>|ユーザー情報の取得|
+|3|GET|/api/account/|ログインしているユーザー自身の情報の取得、更新|
+|4|POST|/api/auth/|アクセストークンを取得する|
+|5|GET|/api/todos/|Todo一覧を表示(要アクセストークン)|
 
 
 ## Token 仕様

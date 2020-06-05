@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from account.models import User
 from account.api.serializers import UserSerializer
-
+from account.api.permissions import ProfilePermission
 
 class UserViewSet(viewsets.ModelViewSet):
     """User View Set
@@ -13,7 +13,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (ProfilePermission,)
 
 
 class ManageUserView(generics.RetrieveUpdateAPIView):
