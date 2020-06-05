@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     # 3rd-party
     'rest_framework',
+    'rest_framework.authtoken', # token用
     'corsheaders',
 
     'django.contrib.admin',
@@ -60,9 +61,9 @@ MIDDLEWARE = [
 ]
 
 # Reactからの接続を許可する
-CORS_ORIGIN_WHITELST = [
-    'http://localhost:3000',
-]
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
 
 ROOT_URLCONF = 'app.urls'
 
@@ -136,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
