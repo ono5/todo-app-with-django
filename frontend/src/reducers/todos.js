@@ -10,9 +10,9 @@ const todos = (state=[], action) =>{
         case ALL_TODO:
             return action.todos
         case UPDATE_TODO:
-            return state.filter(todo => todo.id !== action.id)
-        case DELETE_TODO:
             return state.filter(todo => todo.id ? action.todo : todo)
+        case DELETE_TODO:
+            return state.filter(todo => todo.id !== action.id)
         case DELETE_ALL_TODOS:
             return []
         default:
