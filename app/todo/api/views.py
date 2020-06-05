@@ -1,15 +1,16 @@
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.views import APIView # new
-from rest_framework.response import Response
-
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework import viewsets
 from todo.models import Todo
 from todo.api.serializers import TodoSerializer
 
 
-@api_view(['GET'])
-def todo_list_view(request):
-    """post_view"""
-    todos = Todo.objects.all()
-    serializer = TodoSerializer(todos, many=True)
-    return Response(serializer.data)
+class TodoViewSet(viewsets.ModelViewSet):
+    """Todo View Set
+    ログインしているユーザーのみ許可
+    ModelViewSetを継承しているため、Create Read Update Deleteが可能
+    """
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)

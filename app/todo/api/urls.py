@@ -1,9 +1,13 @@
 from django.urls import path
+from django.conf.urls import include
+from rest_framework import routers
 
-from todo.api.views import (
-    todo_list_view,
-)
+from todo.api.views import TodoViewSet
+
+router = routers.DefaultRouter()
+router.register('todos', TodoViewSet)
+
 
 urlpatterns = [
-    path("todos/", todo_list_view, name="todo-list"),
+    path('', include(router.urls)),
 ]
