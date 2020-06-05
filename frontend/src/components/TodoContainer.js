@@ -5,9 +5,22 @@ import {
 import Todo from './Todo';
 import TodoList from './TodoList';
 import reducer from '../reducers'
+import { SET_USER } from '../actions';
 
 const TodoContainer = () => {
     const [state, dispatch] = useReducer(reducer, {})
+    useEffect(() => {
+        if (!sessionStorage.getItem('username')) {
+            window.location.href = '/login'
+        }
+
+        dispatch({
+            type: SET_USER,
+            username: sessionStorage.getItem('username'),
+            token: sessionStorage.getItem('token')
+        })
+    }, [])
+
     console.log({state})
     return (
 

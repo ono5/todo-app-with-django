@@ -6,7 +6,7 @@ import {
 const user = (state={}, action) =>{
     switch(action.type) {
         case SET_USER:
-            return state
+            return {username: action.username, token: action.token}
         case DELETE_USER:
             // 後で実装
             return {}

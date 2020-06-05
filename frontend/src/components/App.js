@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -9,6 +9,8 @@ import AppContext from '../contexts/AppContext'
 
 function App() {
   const [state, dispatch] = useReducer(reducer, [])
+
+  console.log({state})
   return (
     <AppContext.Provider value={{state, dispatch}}>
       <Router>
