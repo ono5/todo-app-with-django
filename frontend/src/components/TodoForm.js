@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import AppContext from '../contexts/AppContext';
 
-const Todo = () => {
+const TodoForm = () => {
     const { state, dispatch } = useContext(AppContext)
     const [id, setId] = useState(0)
     const [title, setTitle] = useState("")
@@ -78,4 +78,4 @@ const Todo = () => {
     )
 }
 
-export default Todo
+export default TodoForm
