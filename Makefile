@@ -1,4 +1,8 @@
-.PHONY: release all_tests ut mk flt ash startapp superuser django react
+.PHONY: build release all_tests ut mk flt ash startapp superuser django react
+
+build:
+	docker-compose build
+	docker-compose run frontend npm install --save
 
 release:
 	docker-compose run app python3 manage.py collectstatic --no-input
