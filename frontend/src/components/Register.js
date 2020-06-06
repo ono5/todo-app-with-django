@@ -6,14 +6,12 @@ import axios from 'axios'
 import {
     Button,
     Row,
-} from 'react-bootstrap'
-import { SET_USER } from '../actions'
-import AppContext from '../contexts/AppContext'
-import display from '../utils.js/display'
-import Register from './Register'
+} from 'react-bootstrap';
+import { SET_USER } from '../actions';
+import AppContext from '../contexts/AppContext';
+import display from '../utils.js/display';
 
 const Login = () => {
-    const { dispatch } = useContext(AppContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -24,39 +22,23 @@ const Login = () => {
             username: username,
             password: password
         }
-        axios.post('http://localhost/api/auth/', data, {
+        axios.post('http://localhost/api/users/', data, {
             headers: {
                 'Content-Type': 'application/json'
             }})
             .then(res => {
-                var token = 'Token ' + res.data.token
-                dispatch({
-                    type: SET_USER,
-                    username,
-                    token
-                })
-                // 画面表示切り替え
-                display('Login-area', 'Todo-area')
-                // user情報をセッションストレージに格納
-                sessionStorage.setItem('username', username)
-                sessionStorage.setItem('token', token)
+                window.location.href = '/'
             })
             .catch(err => {
                 console.log(err)
-                alert('ユーザー名かパスワードに誤りがあります！')
+                alert('既に同名のユーザが登録されています！')
             })
     }
 
-    const handlerDisplay = (e) => {
-        e.preventDefault()
-        display('Login-area', 'Register-area')
-    }
-
     return (
-        <>
-        <div className="App container-flud" id="Login-area">
+        <div className="App container-flud" id="Register-area">
             <header className="App-header Login-header">
-                <h1 className="mb-4">Login</h1>
+                <h1 className="mb-4">Register User</h1>
                 <Row className="login-row">
                     <form>
                         <div className="form-group">
@@ -78,17 +60,11 @@ const Login = () => {
                         <Button
                           className="btn btn-primary btn-block"
                           onClick={submitUserInfo}
-                        >Login</Button>
-                        <div
-                          className="btn btn-outline-warning btn-block mt-5"
-                          onClick={handlerDisplay}
-                        >Register User</div>
+                        >Register</Button>
                     </form>
                 </Row>
             </header>
         </div>
-       <Register />
-       </>
     )
 }
 

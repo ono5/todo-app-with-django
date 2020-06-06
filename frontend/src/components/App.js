@@ -20,7 +20,7 @@ function App() {
     const token = sessionStorage.getItem('token')
     // セッションにユーザー情報が存在する場合は、ログイン済みとする
     if (username && token) {
-       display()
+       display('Login-area', 'Todo-area')
        dispatch({
         type: SET_USER,
         username,

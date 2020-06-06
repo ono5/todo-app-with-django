@@ -21,6 +21,10 @@
   display: none;
 }
 
+#Register-area {
+  display: none;
+}
+
 .Nav-area {
   padding: 100px;
   margin: 0 auto;
