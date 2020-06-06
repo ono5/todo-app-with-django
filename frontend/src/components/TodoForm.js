@@ -19,6 +19,7 @@ const TodoForm = () => {
 
     useEffect(() => {
         // userIDを取得
+        console.log(state.user)
         axios.get(`${state.url}api/account/`, {
             headers: {
                 'Authorization': state.user.token,
@@ -26,7 +27,7 @@ const TodoForm = () => {
             .then(data => {
                 setId(data.data.id)
             })
-    })
+    }, [state.user])
 
     const submitPost = (e) => {
         e.preventDefault()
