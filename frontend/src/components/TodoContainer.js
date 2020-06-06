@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer} from 'react'
+import React from 'react'
 import {
     Row
 } from 'react-bootstrap';
@@ -11,10 +11,10 @@ const TodoContainer = () => {
 
         <div className="App container-flud" id="Todo-area">
             <header className="App-header">
+                <Row className="App-row">
                 <Row>
                     <Navibar />
                 </Row>
-                <Row className="App-row">
                   <TodoForm />
                   <TodoList />
                 </Row>
