@@ -15,7 +15,7 @@ const Navibar = () => {
       }
     }
     return (
-        <Nav className="Nav-area">
+        <Nav className="Nav-area py-5">
           <a onClick={signOut} className="Signout">
             <i className="fas fa-user-circle fa-lg text-warning">{state.user.username}</i>
           </a>
