@@ -19,7 +19,7 @@
 |1|POST|/api/users/|ユーザーの新規作成|
 |2|GET|/api/users/<user_id>|ユーザー情報の取得|
 |3|GET|/api/account/|ログインしているユーザー自身の情報の取得、更新|
-|4|POST|/api/auth/|アクセストークンを取得する|
+|4|POST|/api/auth/|アクセストークンを取得する(Postmanを用いる)|
 |5|GET|/api/todos/|Todo一覧を表示(要アクセストークン)|
 
 

@@ -32,7 +32,7 @@ const TodoForm = () => {
         e.preventDefault()
 
         const data = {
-            author: 1,
+            author: id,
             title: title,
             content: content
         }

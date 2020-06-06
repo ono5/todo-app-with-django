@@ -16,10 +16,11 @@ const TodoList = () => {
     const { state, dispatch } = useContext(AppContext)
     const [filterKey, setFilterKey] = useState('')
     const [todos, setTodos] = useState(state.todos)
+
     useEffect(() => {
         axios.get('http://localhost/api/todos/', {
             headers: {
-                'Authorization': state.user.token,
+                'Authorization': sessionStorage.getItem('token'),
             }
         })
         .then(res => {
@@ -30,7 +31,10 @@ const TodoList = () => {
                 todos: allTodo
             })
         })
-    }, [filterKey])
+        .catch(err => {
+            console.log(err)
+        })
+    }, [state.user])
 
     const filteredTodo = useMemo(() => {
         return todos.filter(row => row.title.includes(filterKey) || row.content.includes(filterKey))

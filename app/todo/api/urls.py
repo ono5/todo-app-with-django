@@ -5,7 +5,7 @@ from rest_framework import routers
 from todo.api.views import TodoViewSet
 
 router = routers.DefaultRouter()
-router.register('todos', TodoViewSet)
+router.register('todos', TodoViewSet, 'todos')
 
 
 urlpatterns = [

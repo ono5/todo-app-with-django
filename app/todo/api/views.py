@@ -10,7 +10,10 @@ class TodoViewSet(viewsets.ModelViewSet):
     ログインしているユーザーのみ許可
     ModelViewSetを継承しているため、Create Read Update Deleteが可能
     """
-    queryset = Todo.objects.all().order_by('id')
+    # queryset = Todo.objects.all().order_by('id')
     serializer_class = TodoSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return Todo.objects.filter(author=self.request.user).order_by('id')
