@@ -9,7 +9,6 @@ import {
     Col,
 } from 'react-bootstrap';
 import AppContext from '../contexts/AppContext';
-import todos from '../reducers/todos';
 import { DELETE_ALL_TODOS } from '../actions';
 
 const TodoForm = () => {
@@ -67,7 +66,7 @@ const TodoForm = () => {
 
     return (
         <Col xl={3}>
-            <h4>To-Do App</h4>
+            <h3>To-Do App</h3>
             <form>
                 <div className="form-group">
                     <label htmlFor="formTodoTitle">タイトル</label>
