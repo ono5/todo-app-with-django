@@ -52,6 +52,9 @@ const Login = () => {
         display('Login-area', 'Register-area')
     }
 
+    // タイトルとコンテンツの入力チェック
+    const unPost = username === '' || password === ''
+
     return (
         <>
         <div className="App container-flud" id="Login-area">
@@ -78,6 +81,7 @@ const Login = () => {
                         <Button
                           className="btn btn-primary btn-block"
                           onClick={submitUserInfo}
+                          disabled={unPost}
                         >Login</Button>
                         <div
                           className="btn btn-outline-warning btn-block mt-5"

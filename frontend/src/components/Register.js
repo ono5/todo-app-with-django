@@ -34,6 +34,13 @@ const Login = () => {
                 alert('既に同名のユーザが登録されています！')
             })
     }
+    // タイトルとコンテンツの入力チェック
+    const unPost = username === '' || password === ''
+
+    const handlerDisplay = (e) => {
+        e.preventDefault()
+        display('Register-area', 'Login-area')
+    }
 
     return (
         <div className="App container-flud" id="Register-area">
@@ -60,7 +67,12 @@ const Login = () => {
                         <Button
                           className="btn btn-primary btn-block"
                           onClick={submitUserInfo}
+                          disabled={unPost}
                         >Register</Button>
+                        <div
+                          className="btn btn-outline-warning btn-block mt-5"
+                          onClick={handlerDisplay}
+                        >To Login</div>
                     </form>
                 </Row>
             </header>
