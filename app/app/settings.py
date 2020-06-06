@@ -28,7 +28,6 @@ DEBUG = True
 # 全てのHOSTを許可する
 ALLOWED_HOSTS = ["*"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -64,6 +63,12 @@ MIDDLEWARE = [
 # Reactからの接続を許可する
 CORS_ORIGIN_WHITELIST = (
     'frontend:3000',
+)
+
+from corsheaders.defaults import default_headers
+
+CORS_ALLOW_HEADERS = default_headers + (
+    'Access-Control-Allow-Origin',
 )
 
 ROOT_URLCONF = 'app.urls'

@@ -18,7 +18,7 @@ const TodoList = () => {
     const [todos, setTodos] = useState(state.todos)
 
     useEffect(() => {
-        axios.get('http://localhost/api/todos/', {
+        axios.get(`${state.url}api/todos/`, {
             headers: {
                 'Authorization': sessionStorage.getItem('token'),
             }

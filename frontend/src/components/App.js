@@ -6,12 +6,13 @@ import Login from './Login';
 import reducer from '../reducers/'
 import AppContext from '../contexts/AppContext'
 import display from '../utils.js/display';
-import { SET_USER } from '../actions';
+import { SET_USER, SET_URL } from '../actions';
 
 function App() {
   const initialState = {
     todos: [],
     user: {},
+    url: "",
   }
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -25,6 +26,9 @@ function App() {
         type: SET_USER,
         username,
         token
+      })
+      dispatch({
+        type: SET_URL,
       })
     }
 

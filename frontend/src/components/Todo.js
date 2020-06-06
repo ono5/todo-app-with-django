@@ -21,7 +21,7 @@ const Todo = ({todo}) => {
         const result = window.confirm(`Would you like to delete todo(ID=${id})？`)
         if (result) {
             dispatch({ type: DELETE_TODO, id: id})
-            axios.delete(`http://localhost/api/todos/${id}/`, {
+            axios.delete(`${state.url}api/todos/${id}/`, {
                 headers: {
                     'Authorization': state.user.token,
             }})
@@ -38,7 +38,7 @@ const Todo = ({todo}) => {
         console.log(data)
         const result = window.confirm(`Would you like to update Todo(ID=${id})？`)
         if (result) {
-            axios.put(`http://localhost/api/todos/${id}/`, data,{
+            axios.put(`${state.url}api/todos/${id}/`, data,{
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': state.user.token

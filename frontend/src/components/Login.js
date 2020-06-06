@@ -13,7 +13,7 @@ import display from '../utils.js/display'
 import Register from './Register'
 
 const Login = () => {
-    const { dispatch } = useContext(AppContext)
+    const { state, dispatch } = useContext(AppContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -24,7 +24,7 @@ const Login = () => {
             username: username,
             password: password
         }
-        axios.post('http://localhost/api/auth/', data, {
+        axios.post(`${state.url}api/auth/`, data, {
             headers: {
                 'Content-Type': 'application/json'
             }})

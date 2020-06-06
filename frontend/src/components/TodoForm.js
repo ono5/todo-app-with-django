@@ -19,7 +19,7 @@ const TodoForm = () => {
 
     useEffect(() => {
         // userIDを取得
-        axios.get('http://localhost/api/account/', {
+        axios.get(`${state.url}api/account/`, {
             headers: {
                 'Authorization': state.user.token,
             }})
@@ -36,7 +36,7 @@ const TodoForm = () => {
             title: title,
             content: content
         }
-        axios.post('http://localhost/api/todos/', data, {
+        axios.post(`${state.url}api/todos/`, data, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': state.user.token
@@ -52,7 +52,7 @@ const TodoForm = () => {
         if (result) {
             const todos = state.todos
             todos.map(todo => {
-                axios.delete(`http://localhost/api/todos/${todo.id}/`, {
+                axios.delete(`${state.url}api/todos/${todo.id}/`, {
                     headers: {
                         'Authorization': state.user.token,
                 }})

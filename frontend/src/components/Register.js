@@ -1,4 +1,5 @@
 import React, {
+    useContext,
     useState,
 } from 'react'
 import axios from 'axios'
@@ -7,8 +8,10 @@ import {
     Row,
 } from 'react-bootstrap';
 import display from '../utils.js/display';
+import AppContext from '../contexts/AppContext'
 
 const Login = () => {
+    const { state, dispatch } = useContext(AppContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -19,7 +22,7 @@ const Login = () => {
             username: username,
             password: password
         }
-        axios.post('http://localhost/api/users/', data, {
+        axios.post(`${state.url}api/users/`, data, {
             headers: {
                 'Content-Type': 'application/json'
             }})
