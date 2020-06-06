@@ -37,3 +37,10 @@
 .Todo-list th td {
   color: white;
 }
+
+.Todo-input {
+  width: 100%;
+  background: #343A40;
+  color: white;
+  outline: 0;
+}

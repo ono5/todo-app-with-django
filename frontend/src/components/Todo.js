@@ -57,12 +57,14 @@ const Todo = ({todo}) => {
             <td>{id}</td>
             <td>
                 <input
+                  className="Todo-input"
                   defaultValue={title}
                   onChange={e => setUpdateTitle(e.target.value)}
                 />
             </td>
             <td>
                 <input
+                  className="Todo-input"
                   defaultValue={content}
                   onChange={e => setUpdateContent(e.target.value)}
                 />
