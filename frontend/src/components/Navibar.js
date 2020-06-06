@@ -7,7 +7,7 @@ import { Nav } from 'react-bootstrap'
 const Navibar = () => {
     const { state, dispatch } = useContext(AppContext)
     const signOut = () => {
-      const result = window.confirm('ログアウトしますか？')
+      const result = window.confirm('Logout?')
       if (result) {
         // セッションストレージ内の情報を破棄
         sessionStorage.clear()

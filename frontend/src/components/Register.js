@@ -1,14 +1,11 @@
 import React, {
     useState,
-    useContext,
 } from 'react'
 import axios from 'axios'
 import {
     Button,
     Row,
 } from 'react-bootstrap';
-import { SET_USER } from '../actions';
-import AppContext from '../contexts/AppContext';
 import display from '../utils.js/display';
 
 const Login = () => {
@@ -31,7 +28,7 @@ const Login = () => {
             })
             .catch(err => {
                 console.log(err)
-                alert('既に同名のユーザが登録されています！')
+                alert('You have already registered the same username!')
             })
     }
     // タイトルとコンテンツの入力チェック

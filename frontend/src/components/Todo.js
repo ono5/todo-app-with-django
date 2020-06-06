@@ -18,7 +18,7 @@ const Todo = ({todo}) => {
 
     const submitDelete = (e) => {
         e.preventDefault()
-        const result = window.confirm(`予定(ID=${id})を削除しますか？`)
+        const result = window.confirm(`Would you like to delete todo(ID=${id})？`)
         if (result) {
             dispatch({ type: DELETE_TODO, id: id})
             axios.delete(`http://localhost/api/todos/${id}/`, {
@@ -36,7 +36,7 @@ const Todo = ({todo}) => {
             content: updateContent ? updateContent : content
         }
         console.log(data)
-        const result = window.confirm(`予定(ID=${id})を更新しますか？`)
+        const result = window.confirm(`Would you like to update Todo(ID=${id})？`)
         if (result) {
             axios.put(`http://localhost/api/todos/${id}/`, data,{
                 headers: {

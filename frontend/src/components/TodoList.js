@@ -58,8 +58,8 @@ const TodoList = () => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>タイトル</th>
-                        <th>内容</th>
+                        <th>Title</th>
+                        <th>Content</th>
                         <th></th>
                         <th></th>
                     </tr>

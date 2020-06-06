@@ -48,7 +48,7 @@ const TodoForm = () => {
 
     const submitAllDelete = (e) => {
         e.preventDefault()
-        const result = window.confirm('全ての予定を削除しますか？')
+        const result = window.confirm('Would you like to delete all todo?')
         if (result) {
             const todos = state.todos
             todos.map(todo => {
@@ -69,7 +69,7 @@ const TodoForm = () => {
             <h3>To-Do App</h3>
             <form>
                 <div className="form-group">
-                    <label htmlFor="formTodoTitle">タイトル</label>
+                    <label htmlFor="formTodoTitle">Title:</label>
                     <input
                       className="form-control"
                       id="formTodoTitle"
@@ -77,7 +77,7 @@ const TodoForm = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="formTodoBody">内容</label>
+                    <label htmlFor="formTodoBody">Content:</label>
                     <textarea
                       className="form-control"
                       id="formTodoBody"
@@ -87,12 +87,12 @@ const TodoForm = () => {
                 <Button
                   className="btn btn-primary"
                   onClick={submitPost}
-                  disabled={unPost}>予定を追加する</Button>
+                  disabled={unPost}>Add Todo</Button>
                 <Button
                   className="btn btn-danger m-4"
                   onClick={submitAllDelete}
                   disabled={state.todos.length === 0}
-                >全ての予定を削除する</Button>
+                >All Delete</Button>
             </form>
         </Col>
     )
