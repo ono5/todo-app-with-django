@@ -1,10 +1,10 @@
-const display = () => {
+const display = (noneAreaID, blockAreaID) => {
       // ログイン画面非表示
-      const loginArea = document.getElementById('Login-area')
-      loginArea.style.display = "none"
+      const noneArea = document.getElementById(noneAreaID)
+      noneArea.style.display = "none"
       // Todo画面表示
-      const todoArea = document.getElementById('Todo-area')
-      todoArea.style.display = "block"
+      const blockArea = document.getElementById(blockAreaID)
+      blockArea.style.display = "block"
 }
 
 export default display
