@@ -25,7 +25,8 @@ SECRET_KEY = 'n%=hyw&)zhc%=&$=75huus8@@=xs-pyj(q8%tz2_l1hsfua=ma'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# 全てのHOSTを許可する
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
