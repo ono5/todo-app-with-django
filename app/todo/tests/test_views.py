@@ -89,3 +89,26 @@ class TodoViewSetTests(TestCase):
         serializer = TodoSerializer(todos, many=True)
         assert res.status_code == status.HTTP_200_OK
         assert res.data == serializer.data
+
+    def test_create_todo(self):
+        """Todoリストを作成する
+        """
+        # Arrange ---
+        payload = {
+            'author': self.user.id,
+            'title': 'Post Todo',
+            'content': 'Post Todo Content!!!'
+        }
+
+        # Act ---
+        res = self.client.post(TODO_URL, payload)
+
+        # Assert ---
+        assert res.status_code == status.HTTP_201_CREATED
+        todo = Todo.objects.get(id=res.data['id'])
+        for key in payload.keys():
+            if key == "author":
+                assert payload[key] == getattr(todo, key).id
+            else:
+                assert payload[key] == getattr(todo, key)
+
