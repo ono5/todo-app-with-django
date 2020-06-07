@@ -53,6 +53,7 @@ const Login = () => {
                             <input
                               className="form-control"
                               id="formTodoTitle"
+                              maxLength="255"
                               onChange={e => setUsername(e.target.value)}
                             />
                         </div>
@@ -60,6 +61,7 @@ const Login = () => {
                             <label htmlFor="formTodoBody">Password</label>
                             <input
                               className="form-control"
+                              maxLength="255"
                               id="formTodoTitle"
                               onChange={e => setPassword(e.target.value)}
                             />

@@ -74,6 +74,7 @@ const TodoForm = () => {
                     <input
                       className="form-control"
                       id="formTodoTitle"
+                      maxLength="50"
                       onChange={e => setTitle(e.target.value)}
                     />
                 </div>
@@ -82,6 +83,7 @@ const TodoForm = () => {
                     <textarea
                       className="form-control"
                       id="formTodoBody"
+                      maxLength="255"
                       onChange={e => setContent(e.target.value)}
                     />
                 </div>
