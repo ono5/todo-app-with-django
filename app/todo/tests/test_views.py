@@ -1,3 +1,4 @@
+import pytest
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
@@ -118,7 +119,7 @@ class TodoViewSetTests(TestCase):
                 assert payload[key] == getattr(todo, key)
 
     def test_update_todo(self):
-        """Todoリストを作成する
+        """Todoリストを更新する
         """
         # Arrange ---
         todo = sample_todo(user=self.user)
@@ -129,7 +130,6 @@ class TodoViewSetTests(TestCase):
         }
         url = detail_url(todo.id)
 
-
         # Act ---
         self.client.put(url, payload)
         todo.refresh_from_db()
@@ -139,3 +139,21 @@ class TodoViewSetTests(TestCase):
         assert todo.title == payload['title']
         assert todo.content == payload['content']
 
+    def test_delete_todo(self):
+        """Todoリストを削除する
+        """
+        # Arrange ---
+        todo = sample_todo(user=self.user)
+        payload = {
+            'author': self.user.id,
+            'title': 'Update Todo',
+            'content': 'Update Todo Content!!!'
+        }
+        url = detail_url(todo.id)
+
+        # Act ---
+        self.client.delete(url)
+
+        # Assert ---
+        with pytest.raises(Todo.DoesNotExist):
+            Todo.objects.get(id=todo.id)
