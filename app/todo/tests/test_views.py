@@ -13,6 +13,11 @@ from todo.api.serializers import TodoSerializer
 TODO_URL = reverse('todo:todos-list')
 
 
+def detail_url(todo_id):
+    """Todo詳細情報の取得"""
+    return reverse('todo:todos-detail', args=[todo_id])
+
+
 def sample_todo(user, **params):
     """Todoを作成する
     """
@@ -111,4 +116,26 @@ class TodoViewSetTests(TestCase):
                 assert payload[key] == getattr(todo, key).id
             else:
                 assert payload[key] == getattr(todo, key)
+
+    def test_update_todo(self):
+        """Todoリストを作成する
+        """
+        # Arrange ---
+        todo = sample_todo(user=self.user)
+        payload = {
+            'author': self.user.id,
+            'title': 'Update Todo',
+            'content': 'Update Todo Content!!!'
+        }
+        url = detail_url(todo.id)
+
+
+        # Act ---
+        self.client.put(url, payload)
+        todo.refresh_from_db()
+
+        # Assert ---
+        assert todo.author.id == payload['author']
+        assert todo.title == payload['title']
+        assert todo.content == payload['content']
 
