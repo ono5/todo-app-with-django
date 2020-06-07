@@ -144,11 +144,6 @@ class TodoViewSetTests(TestCase):
         """
         # Arrange ---
         todo = sample_todo(user=self.user)
-        payload = {
-            'author': self.user.id,
-            'title': 'Update Todo',
-            'content': 'Update Todo Content!!!'
-        }
         url = detail_url(todo.id)
 
         # Act ---
