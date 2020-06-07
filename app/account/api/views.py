@@ -1,11 +1,12 @@
 from rest_framework import generics
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 from account.models import User
 from account.api.serializers import UserSerializer
 from account.api.permissions import ProfilePermission
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """User View Set
