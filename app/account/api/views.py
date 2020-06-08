@@ -10,7 +10,7 @@ from account.api.permissions import ProfilePermission
 
 class UserViewSet(viewsets.ModelViewSet):
     """User View Set
-    全てのユーザーを許可
+    ユーザー情報の検索/登録/更新/削除するAPIを提供する
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -19,7 +19,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class ManageUserView(generics.RetrieveUpdateAPIView):
     """Manage User View
-    認証が通ったユーザーのみ可
+    アクセストークンからユーザー情報を取得/更新するAPIを提供する
     """
     serializer_class = UserSerializer
     authentication_classes = (TokenAuthentication,)

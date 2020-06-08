@@ -7,8 +7,8 @@ from todo.api.serializers import TodoSerializer
 
 class TodoViewSet(viewsets.ModelViewSet):
     """Todo View Set
-    ログインしているユーザーのみ許可
-    ModelViewSetを継承しているため、Create Read Update Deleteが可能
+    Todoの検索/登録/更新/削除するPIを提供する
+    認証(アクセストークン)が必要
     """
     # queryset = Todo.objects.all().order_by('id')
     serializer_class = TodoSerializer
