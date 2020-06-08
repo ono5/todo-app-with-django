@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken', # token用
     'corsheaders',
+    'rest_framework_swagger',
 
     'django.contrib.admin',
     'django.contrib.auth',
